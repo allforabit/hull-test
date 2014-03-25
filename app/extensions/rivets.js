@@ -21,6 +21,7 @@ define({
         }
       },
       unsubscribe: function(obj, keypath, callback) {
+        console.log(obj);
         if(obj instanceof app.core.mvc.Collection && keypath === 'models') {
           obj.off("add remove", callback);
         } else {
@@ -46,21 +47,19 @@ define({
     });
 
     app.components.after('doRender', function(){
+
       var _this = this;
-      this.rivetsTemplate = rivets.bind(this.el, this.data);
+      this.rivetsTemplate = rivets.bind(this.el, _this.data);
 
       var rivetsEachRoutine = this.rivetsTemplate.binders['each-*'].routine;
 
       this.rivetsTemplate.binders['each-*'].routine = function(el, collection){
         rivetsEachRoutine.apply(this, arguments);
-
-        _.defer(function(){
+        _.defer(function() {
           _this.sandbox.start(el);
         });
 
       }
-
-      //_.bind(this.rivetsTemplate.binders['each-*'].routine, this);
 
     });
 

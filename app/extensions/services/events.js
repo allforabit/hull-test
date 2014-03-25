@@ -38,15 +38,13 @@ define(function(){
         if(this.addEventData){
 
           this.data = this.data || {};
-          this.data.events = [{title: 'test'}];
+          //this.data.events = [{title: 'test'}];
 
-          /*
           this.data.events = new app.core.mvc.Collection([{title: 'test'}], {
             comparator: function(item){
               return item.get('title');
             }
           });
-          */
 
         }
       });
@@ -104,13 +102,11 @@ define(function(){
             //console.log(this.data.events);
 
             //this.data.events.add(JSON.parse(response));
-            this.data.events = JSON.parse(response);
+            //this.data.events = JSON.parse(response);
 
-            /*
             _.each(JSON.parse(response), function(item){
               this.data.events.push(item);
             }, this);
-            */
 
           });
 

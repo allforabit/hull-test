@@ -1,6 +1,6 @@
-{{me.name}}
 <ul>
-{{#each events}}
-  <li class="media" class="id-{{id}}">{{title}}</li>
-{{/each}}
-</ul>
+  <li rv-each-event="events:models">
+    <div>{event:title}</div><div data-aura-component="likes/button@hull" data-aura-id="~aHR0cDovL2dvb2dsZS5jb20="></div>
+  </li>
+<ul>
+
