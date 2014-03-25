@@ -1,5 +1,5 @@
 require.config({
-  baseUrl: '..',
+  baseUrl: '/hull-test/',
   paths: {
     'jquery':         'bower_components/jquery/jquery',
     'json2':          'bower_components/json2/json2',
@@ -35,7 +35,7 @@ require(['scripts/app'], function(app) {
   config = _.extend(hullConfig, {
     namespace: 'hull',
     sources: {
-      'default' : '/components',
+      'default' : '/hull-test/components',
     }
   });
 
