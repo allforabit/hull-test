@@ -1,0 +1,13 @@
+{
+  "name": "form2js",
+  "homepage": "https://github.com/maxatwork/form2js",
+  "_release": "2d56eb88ee",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2d56eb88ee41af9f5515996be426036bf5a4dc36"
+  },
+  "_source": "git://github.com/maxatwork/form2js.git",
+  "_target": "*",
+  "_originalSource": "form2js"
+}

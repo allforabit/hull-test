@@ -1,0 +1,12 @@
+{
+  "name": "jquery-jsonp",
+  "homepage": "https://github.com/hull/jquery-jsonp",
+  "_release": "b402017ba7",
+  "_resolution": {
+    "type": "commit",
+    "commit": "b402017ba708388af345f8f560ac4f49c1f68090"
+  },
+  "_source": "git://github.com/hull/jquery-jsonp.git",
+  "_target": "b402017ba708388af345f8f560ac4f49c1f68090",
+  "_originalSource": "hull/jquery-jsonp"
+}
