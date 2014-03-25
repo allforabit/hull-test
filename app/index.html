@@ -25,33 +25,14 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-      
-
         <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <h3 class="text-muted">yo</h3>
-            </div>
 
-            <div class="row marketing">
-                <div class="col-lg-12">
-                  <h1>App</h1>
-                  <div data-aura-component="app"></div>
-                </div>
-            </div>
+          <div data-aura-component="events/list"></div>
 
-            <div class="footer">
-                <p>Yo</p>
-            </div>
-
+          <div class="footer">
+            <p>Nyarf</p>
+          </div>
         </div>
-
-
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -62,10 +43,10 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
-        <script src="config.js"></script>
+        <script src="hull_config.js"></script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script data-main="scripts/config" src="../bower_components/requirejs/require.js"></script>
         <!-- endbuild -->
-</body>
+    </body>
 </html>

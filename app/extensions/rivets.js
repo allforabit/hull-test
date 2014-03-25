@@ -5,20 +5,64 @@ define({
     }
   },
   initialize: function(app){
-    console.log(app);
 
     var rivets = require('rivets');
 
-    app.components.after('initialize', function(){
-      rivets.bind(this.options.el, this.data)
+    rivets.adapters[':'] = {
+      subscribe: function(obj, keypath, callback) {
+        if(obj instanceof app.core.mvc.Collection && keypath === 'models') {
+          obj.on("add remove", function() { 
+            callback(obj.models);
+          });
+        } else {
+          obj.on("change:" + keypath, function(m, v) {
+            callback(v);
+          });
+        }
+      },
+      unsubscribe: function(obj, keypath, callback) {
+        if(obj instanceof app.core.mvc.Collection && keypath === 'models') {
+          obj.off("add remove", callback);
+        } else {
+          obj.off("change:" + keypath, callback);
+        }
+      },
+      read: function(obj, keypath) {
+        if(obj instanceof app.core.mvc.Collection && keypath === 'models') {
+          return obj.models;
+        }else{
+          return obj.get(keypath);
+        }
+      },
+      publish: function(obj, keypath, value) {
+        obj.set(keypath, value)
+      }
+    };
+
+    rivets.configure({
+      handler: function(target, event, binding) {
+        console.log(arguments);
+      }
     });
 
-    app.components.after('remove', function(){
-      //tidy up
+    app.components.after('doRender', function(){
+      var _this = this;
+      this.rivetsTemplate = rivets.bind(this.el, this.data);
+
+      var rivetsEachRoutine = this.rivetsTemplate.binders['each-*'].routine;
+
+      this.rivetsTemplate.binders['each-*'].routine = function(el, collection){
+        rivetsEachRoutine.apply(this, arguments);
+
+        _.defer(function(){
+          _this.sandbox.start(el);
+        });
+
+      }
+
+      //_.bind(this.rivetsTemplate.binders['each-*'].routine, this);
+
     });
-    
-  },
-  afterAppStart: function(app){
 
   }
 });

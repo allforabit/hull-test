@@ -327,7 +327,27 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
-            }
+            },
+            hull: {
+                files: [
+                  {
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/bower_components/hull.js/aura_components/',
+                    dest: '.tmp/aura_components/',
+                    src: [
+                        '**',
+                    ]
+                  },
+                  {
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/bower_components/hull.js/aura-extensions/',
+                    dest: '.tmp/aura-extensions/',
+                    src: [
+                        '**',
+                    ]
+                  }
+                ]
+            },
         },
 
 
@@ -349,7 +369,8 @@ module.exports = function (grunt) {
             server: [
                 'coffee',
                 'compass:server',
-                'copy:styles'
+                'copy:styles',
+                'copy:hull'
             ],
             test: [
                 'copy:styles'
